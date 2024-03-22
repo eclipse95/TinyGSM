@@ -353,7 +353,7 @@ class TinyGsmA7670 : public TinyGsmModem<TinyGsmA7670>,
       return false;
     }
     int res = waitResponse(GF("+NETCLOSE: 0"),GF("+NETCLOSE: 2")); 
-    if (res != 1 || res != 2){
+    if (res != 1 && res != 2){
       return false;
     }
     return true;
@@ -508,7 +508,7 @@ class TinyGsmA7670 : public TinyGsmModem<TinyGsmA7670>,
       waitResponse();
     }
     sendAT(GF("+CGNSSPWR=1"));  
-    if (waitResponse(10000UL,"+CGNSSPWR: READY!") != 1) { return false; }
+    if (waitResponse(10000UL, GF("+CGNSSPWR: READY!")) != 1) { return false; }
     return true;
   }
 
