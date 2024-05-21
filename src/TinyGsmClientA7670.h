@@ -569,10 +569,10 @@ class TinyGsmA7670 : public TinyGsmModem<TinyGsmA7670>,
       int   imin         = 0;
       float secondWithSS = 0;
 
-      streamSkipUntil(',');               // GPS satellite valid numbers
-      streamSkipUntil(',');               // GLONASS satellite valid numbers
-      streamSkipUntil(',');               // skip dump , A7670
-      streamSkipUntil(',');               // BEIDOU satellite valid numbers
+      ivsat += streamGetIntBefore(',');    // GPS satellite visible numbers
+      ivsat += streamGetIntBefore(',');    // BEIDOU satellite visible numbers
+      ivsat += streamGetIntBefore(',');    // GLONASS satellite visible numbers
+      ivsat += streamGetIntBefore(',');    // GALILEO satellite visible numbers
       ilat  = streamGetFloatBefore(',');  // Latitude in ddmm.mmmmmm
       north = stream.read();              // N/S Indicator, N=north or S=south
       streamSkipUntil(',');
