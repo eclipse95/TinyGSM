@@ -569,7 +569,7 @@ class TinyGsmA7670 : public TinyGsmModem<TinyGsmA7670>,
       int   imin         = 0;
       float secondWithSS = 0;
 
-      ivsat += streamGetIntBefore(',');    // GPS satellite visible numbers
+      ivsat = streamGetIntBefore(',');    // GPS satellite visible numbers
       streamSkipUntil(',');                // BEIDOU satellite visible numbers
       streamSkipUntil(',');                // GLONASS satellite visible numbers
       streamSkipUntil(',');                // GALILEO satellite visible numbers
